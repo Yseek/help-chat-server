@@ -1,0 +1,17 @@
+{
+	"name": "springboot-webflux-chat",
+	"build": {
+	  "dockerfile": "Dockerfile"
+	},
+	"postCreateCommand": "gitmoji -i",
+	"customizations": {
+	  "vscode": {
+		"extensions": [
+		  "vscjava.vscode-java-pack",
+		  "esbenp.prettier-vscode"
+		]
+	  }
+	},
+	"remoteUser": "vscode"
+  }
+  

@@ -1,14 +1,13 @@
 {
-	"name": "springboot-webflux-chat",
-	"build": {
-	  "dockerfile": "Dockerfile"
-	},
-	"forwardPorts": [8080],
-	"customizations": {
-		"jetbrains": {
-			"backend": "IntelliJ"
-		}
-	},
-	"workspaceFolder": "/workspace",
-	"postCreateCommand": "gitmoji -i"
+  "name": "springboot-webflux-chat",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [8080, 5432, 27017],
+  "customizations": {
+    "jetbrains": {
+      "backend": "IntelliJ"
+    }
+  },
+  "postCreateCommand": "gitmoji -i"
 }

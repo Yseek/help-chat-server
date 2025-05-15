@@ -17,4 +17,4 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
 # 작업 디렉토리
 WORKDIR /workspace
 
-EXPOSE 8080    
+EXPOSE 8080

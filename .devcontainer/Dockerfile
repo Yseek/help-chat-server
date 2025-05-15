@@ -14,4 +14,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g gitmoji-cli
 
+# 작업 디렉토리
+WORKDIR /workspace
+
 EXPOSE 8080    

@@ -4,16 +4,11 @@
 	  "dockerfile": "Dockerfile"
 	},
 	"forwardPorts": [8080],
-	"postCreateCommand": "gitmoji -i",
 	"customizations": {
-	  "vscode": {
-		"extensions": [
-			"vscjava.vscode-java-pack",
-			"esbenp.prettier-vscode",
-			"ms-azuretools.vscode-docker",
-			"vmware.vscode-boot-dev-pack"
-		]
-	  }
+		"jetbrains": {
+			"backend": "IntelliJ"
+		}
 	},
-	"remoteUser": "vscode"
+	"workspaceFolder": "/workspace",
+	"postCreateCommand": "gitmoji -i"
 }

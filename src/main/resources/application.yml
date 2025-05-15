@@ -2,3 +2,5 @@ spring:
   data:
     mongodb:
       uri: ${MONGO_URI}
+  main:
+    web-application-type: reactive

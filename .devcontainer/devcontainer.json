@@ -3,7 +3,7 @@
   "dockerComposeFile": ["docker-compose.yml"],
   "service": "app",
   "workspaceFolder": "/workspace",
-  "forwardPorts": [8080, 5432, 27017],
+  "forwardPorts": [8080],
   "customizations": {
     "jetbrains": {
       "backend": "IntelliJ"

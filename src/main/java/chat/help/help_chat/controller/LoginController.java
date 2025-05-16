@@ -20,7 +20,7 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping
-    public Mono<ResponseEntity<LoginResponse>> postMethodName(@RequestBody Mono<LoginRequest> requestMono) {
+    public Mono<ResponseEntity<LoginResponse>> login(@RequestBody Mono<LoginRequest> requestMono) {
 
         return requestMono
                 .flatMap(loginService::login)

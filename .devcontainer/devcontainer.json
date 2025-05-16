@@ -9,5 +9,5 @@
       "backend": "IntelliJ"
     }
   },
-  "postCreateCommand": "gitmoji -i"
+  "postCreateCommand": "gitmoji -i && git config --global credential.helper store && git config --global --add safe.directory ${containerWorkspaceFolder}"
 }

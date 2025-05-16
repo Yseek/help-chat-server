@@ -1,22 +1,34 @@
 package chat.help.help_chat.controller;
 
+import chat.help.help_chat.domain.User;
+import chat.help.help_chat.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/signup")
+@AllArgsConstructor
 public class SignUpController {
 
+    private final UserRepository userRepository;
+
     @PostMapping
-    public ResponseEntity<String> signup(@RequestBody SignUpRequest signUpRequest) {
+    public Mono<ResponseEntity<String>> signup(@RequestBody Mono<SignUpRequest> signUpRequestMono) {
 
-        String email = signUpRequest.email;
-        String password = signUpRequest.password;
-        System.out.println("email = " + email);
-        System.out.println("password = " + password);
-
-        return ResponseEntity.ok("Sign up successful");
+        return signUpRequestMono
+                .flatMap(request ->
+                        userRepository.findByEmail(request.email())
+                                .flatMap(existingUser -> {
+                                    return Mono.just(ResponseEntity.badRequest().body("이미 가입된 이메일입니다."));
+                                })
+                                .switchIfEmpty(
+                                        userRepository.save(new User(request.email(), request.password()))
+                                                .map(savedUser -> ResponseEntity.ok("회원가입 성공"))
+                                ));
     }
 
-    record SignUpRequest(String email, String password) {}
+    public record SignUpRequest(String email, String password) {
+    }
 }

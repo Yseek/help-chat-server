@@ -1,6 +1,7 @@
 package chat.help.help_chat.controller;
 
 import chat.help.help_chat.domain.User;
+import chat.help.help_chat.dto.SignUpRequest;
 import chat.help.help_chat.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,5 @@ public class SignUpController {
                                         userRepository.save(new User(request.email(), request.password()))
                                                 .map(savedUser -> ResponseEntity.ok("회원가입 성공"))
                                 ));
-    }
-
-    public record SignUpRequest(String email, String password) {
     }
 }

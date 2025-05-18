@@ -1,5 +1,6 @@
 package chat.help.help_chat.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,7 @@ public class ChatMessage {
     private String roomId;
     private String sender;
     private String message;
-    private LocalDateTime sendAt = LocalDateTime.now();
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS", timezone = "Asia/Seoul")
+    private LocalDateTime sendAt;
+
 }

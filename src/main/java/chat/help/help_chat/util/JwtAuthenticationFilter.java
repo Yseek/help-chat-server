@@ -28,8 +28,12 @@ public class JwtAuthenticationFilter implements WebFilter {
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         String path = exchange.getRequest().getPath().toString();
 
+        log.info("JWT 필터 진입");
+        log.info("path: {}", path);
+
         // 인증이 필요 없는 경로는 바로 통과
-        if (path.startsWith("/login") || path.startsWith("/signup")) {
+        if (path.startsWith("/login") || path.startsWith("/signup") || path.startsWith("/chat/stream")) {
+            log.info("JWT 통과");
             return chain.filter(exchange);
         }
 

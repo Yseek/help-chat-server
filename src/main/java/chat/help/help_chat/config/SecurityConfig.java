@@ -27,7 +27,8 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // CORS는 별도 처리 or enable
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers("*").permitAll()
-                        .pathMatchers("/chat-room/**").authenticated()
+                        .pathMatchers("/chat/stream").permitAll()
+                        .pathMatchers("/chat/**").authenticated()
                         .anyExchange().permitAll()
                 )
                 .addFilterAt(jwtAuthenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)

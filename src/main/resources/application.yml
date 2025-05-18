@@ -4,3 +4,9 @@ spring:
       uri: ${MONGO_URI}
   main:
     web-application-type: reactive
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG

@@ -2,6 +2,7 @@ package chat.help.help_chat.service;
 
 import chat.help.help_chat.domain.ChatMessage;
 import chat.help.help_chat.domain.ChatRoom;
+import chat.help.help_chat.dto.ChatRoomResponse;
 import chat.help.help_chat.repository.ChatRepository;
 import chat.help.help_chat.repository.ChatRoomRepository;
 import lombok.AllArgsConstructor;
@@ -74,6 +75,12 @@ public class ChatRoomService {
     public Flux<ChatMessage> getChatHistory(String roomId) {
         return chatRepository.findByRoomId(roomId)
                 .sort(Comparator.comparing(ChatMessage::getSendAt)); // 시간순 정렬
+    }
+
+    public Flux<ChatRoomResponse> getAllRooms(){
+        return chatRoomRepository
+                .findAll()
+                .map(chatRoom -> new ChatRoomResponse(chatRoom.getId(), chatRoom.getEmail()));
     }
 
 }

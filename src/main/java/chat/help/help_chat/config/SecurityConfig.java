@@ -38,7 +38,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000")); // ✅ 프론트 주소 명시
+        config.setAllowedOrigins(List.of("http://localhost:3000", "http://192.168.0.14:3000")); // ✅ 프론트 주소 명시
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*")); // ✅ Authorization 헤더 포함
         config.setAllowCredentials(true); // ✅ JWT or 쿠키용

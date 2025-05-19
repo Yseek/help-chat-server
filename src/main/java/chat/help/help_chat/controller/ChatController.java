@@ -49,6 +49,11 @@ public class ChatController {
                 .switchIfEmpty(
                         chatRoomService.createRoom(email)
                 )
-                .map(room -> new ChatRoomResponse(room.getId()));
+                .map(room -> new ChatRoomResponse(room.getId(), room.getEmail()));
+    }
+
+    @GetMapping("/rooms")
+    public Flux<ChatRoomResponse> getAllRooms() {
+        return chatRoomService.getAllRooms();
     }
 }
